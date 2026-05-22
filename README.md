@@ -1,4 +1,4 @@
-# Digitalers 2025
+# Digitalers 2026
 
 Repositorio creado para el trabajo con los alumnos del curso Front End del
 programa Digitalers dictado desde Junio hasta Novimbre del año 2026. El curso
