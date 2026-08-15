@@ -1,50 +1,110 @@
 /*
-    Programación Orientada a Objetos
+    Programación Orientada a Objetos (POO)
         -> Clases - Plantillas
         -> Objetos - Copias de las Plantillas
-            -> Objeto HTML - Guarda todo lo que podemos hacer con un elemento del HTML
-                -> className
-                -> textContent - Permite agregar texto plano
-                -> innerText - Permite agregar texto plano. Calcula estilos CSS. Recomendado no usar
-                -> innerHTML - Permite agregar texto enriquecido (HTML). Vulnerable a XSS
-            -> Objeto Number - Guarda todo lo que podemos hacer con un dato de tipo number
-            -> Objeto String - Guarda todo lo que podemos hacer con un dato de tipo string
-            -> Objeto Date - Guarda todo lo que podemos hacer con fechas
-                -> https://lenguajejs.com/javascript/fechas/date-fechas-nativas/ - Objeto Date
-                -> https://lenguajejs.com/javascript/fechas/formatear-fechas-con-intl/ - Formatear Fecha
-                -> https://lenguajejs.com/javascript/fechas/temporal-api/ - Temporal
+            -> Objeto HTML
+            -> Objeto Date
+            -> Objeto Array
+            -> Objeto Object
 
-    Operadores de Variable
-        => Matemáticos
-        => Asignación
-        => Incremento(++)/Decremento(--)
-        => Lógicos - Permiten crear condiciones
-            -> Operadores de Comparación
-                -> && (AND) - La condición es true si todas las condiciones individuales son true
-                -> || (OR) - La condición es true si una de las condiciones individuales es true
-                -> ! (NOT) - Invierte el resultado de la condición
+    Tipos da Datos - https://lenguajejs.com/javascript/tipos/que-son/       
+        => Primitivos - number, string, boolean, etc
+        => Compuestos
+            -> Objetos
+                => Arrays 
+                    -> Etiquetan sus "cajones" con un índice
+                        -> índice, número otorgado por JS
+                            -> El "primer cajón" siempre tiene el número 0
+                            -> El resto de los "cajones" se etiquetan de forma secuencial
+                            -> El valor del índice es conocido como posición
+                    -> índice !== longitud
+                    -> Longitud - Cantidad de elementos almacenados en el Array        
+                => Objetos Literales
+                    -> El programador es responsable de identificar el "cajón"
+                    -> Para clave: valor
+                        -> clave - etiqueta del "cajón"
+                        -> valor - elemento almacenado en el "cajón"
+            -> Funciones
+*/
 
-    NO SE PUEDE OPERAR CON VARIABLES DE DISTINTO TIPO    
-        -> El operador == o != NO impide el casteo implícito
-            -> number == string -> string == string -> true
-        -> El operador === o !== IMPIDE el casteo implícito    
+// Tipo de Dato primitivo
+var miVar = 1;
+console.log("Dato almacenado en miVar", miVar);
+miVar += 1; // Dentro de la variable miVar hay almacenado un dato, quiero recuperarlo, realizar la operación del operador + y almacenar el resultado en la variable miVar
 
-    Condiciones - Son preguntas que se responden sí o no
-        -> ¿Es 7 mayor que 3? - Sí
-            -> 7 > 3 - true
-        -> ¿3 es mayor o igual que 7? - No
-            -> 3 >= 7 - false
-        -> ¿Hay algo guardado en la variable? - La existencia o no de un valor almacenado en una variable es una condición
-            -> falsie - Valores que hacen que JS castee a false
-                -> undefined
-                -> null
-                -> false
-                -> 0
-                -> -0
-                -> ""
-                -> NaN
-            -> trusty - Todo valor que no esté en la lista de falsie, es casteado a true   
-            
+// Arrays - https://lenguajejs.com/javascript/arrays/que-es/
+console.log(" ");
+console.log("Arrays");
+
+var miArr = [];
+console.log("Dato almacenado en miArr", miArr);
+
+// Longitud: 3
+// Índices: 0, 1, 2
+var arr = ["Dato 1", "Dato 2", "Dato 3"];
+console.log(arr);
+console.log(
+  "Quiero ver qué hay almacenado en el cajón con el índice 0",
+  arr[0],
+);
+
+// Posible. No recomendado. Esto evita predecir correctamente cómo va a funcionar nuestro programa
+var arrHetegoneo = ["Dato string", 1, true, undefined, null, [], {}];
+
+arr[1] = "Dato 2 - Modificado";
+console.log(arr);
+
+// Modificar la longitud del array
+arr.push("Dato 4"); // Agrega un dato a la última posición del array
+console.log(arr);
+
+arr.pop(); // Elimina el dato que se encuentra en la última posición del array
+console.log(arr);
+
+// Objetos Literales - https://lenguajejs.com/javascript/objetos/que-son/
+console.log(" ");
+console.log("Objetos Literales");
+
+var miObj = {};
+console.log("Dato almacenado en miObj", miObj);
+
+var obj = {
+  nombre: "Pepe",
+  apellido: "Peposo",
+  edad: 35,
+};
+
+// Acceso al dato mediante notación de punto
+console.log(obj.nombre);
+console.log(obj);
+obj.nombre = "Pepin";
+console.log(obj);
+
+// Acceso al dato mediante notación de corchete - La usamos cuando no sabemos qué cajón vamos a necesitar al momento de escribir el código
+console.log(obj["nombre"]);
+
+/*
+    Programa - Pedir al usuario que ingrese el número 1 si quiere ver el nombre y el 2 si quiere ver la edad
+*/
+
+// var datoElegido = parseInt(
+//   prompt("Ingrese 1 si quiere ver el nombre o 2 si quiere ver el apellido"),
+// );
+
+var datoElegido = 1;
+var cajonElegido = datoElegido === 1 ? "nombre" : "apellido";
+
+// console.log(obj.cajonElegido); -> undefined - No existe un cajón llamado cajonElegido
+console.log("Dato elegido por el usuario:", obj[cajonElegido]);
+
+/*      
+
+    Todo código escrito entre llaves
+    {
+        // bloque de código
+    } 
+
+
     Estructuras de Control de Flujo - Usan condiciones para saber si realizan/repiten una acción     
         => Condicionales - Escribimos condiciones con la intención de obtener un true. Buscamos responder qué hacer si X sucede
             -> if/else
@@ -60,221 +120,117 @@
                 -> Evaluar un dato PREVIAMENTE PROCESADO del que se conocen los posibles resultados   
                 -> Evaluar DATO PROCESADO === valor esperado
         => Bucles - Escribimos condiciones que indiquen hasta cuando debe repetirse el bucle. Buscamos que en algún momento la condición sea false. Si nunca se convierte en false, tenemos un error conocido como bucle infinito
-            -> for
+            -> for - Ideal para "recorrer" Arrays
             -> while
                 -> Ejecuta el código si la condición es true y MIENTRAS que la condición sea true
                     -> Condición false? - Nunca ejecuta el código
-            -> do-while   
+            -> do-while - Ideal para solicitar datos
+                -> Ejecuta el código, al menos una vez, y MIENTRAS que la condición sea true
+                    -> Condición false? - El código se ejecuta una vez   
 */
 
-/*
-    Programa - Pedir al usuario que ingrese un número entre el 0 y el 6. Usar ese número para indicar un día la semana, asumiendo que 0 es Domingo y 6 es Sábado. Asegurarse que el valor ingresado no sea menor de 0 ni mayor de 6. El tipo de dato debe ser number.
+console.log(" ");
+console.log("Bucle for");
 
-    ¿Qué?
-        -> 1. Obtener el dato crudo
-        -> 2. Validar el dato crudo
-            -> a. Evaluar que el dato sea un número
-            -> b. Evaluar que el número no sea menor a 0 ni mayor a 6
+var colores = ["Rojo", "Amarillo", "Verde"];
+var ul = document.querySelector(".colores");
 
-    ¿Cómo?
-        -> 1. 
-            -> a. Crear variable datoCrudo
-            -> b. Utilizar prompt para solicitar: "Ingresar un número entre 0 y 6"
-            -> c. Almacenar el valor ingresado en la variable datoCrudo
-        -> 2.
-            -> a. Utilizar parseInt para convertir el dato almacenado en la variable datoCrudo a number
-                -> i. Si el usuario no ingresa un número válido, parseInt retorna NaN -> paseInt(datoCrudo) !== NaN  
-                    -> ¿El usuario ingreso un número?
-                -> ii. datoCrudo < 0 || datoCrudo > 6
-                    -> ¿El número ingresado por el usuario se encuentra en rango deseado?
-*/
-
-// var datoCrudo = parseInt(prompt("Ingresar un número entre 0 y 6"));
-
-// ¿datoCrudo almacena un NaN?
-// while (Number.isNaN(datoCrudo)) {
-//   datoCrudo = parseInt(
-//     prompt("No ingresaste un número. Ingresar un número entre 0 y 6"),
-//   );
-// }
-
-// while (datoCrudo < 0 || datoCrudo > 6) {
-//   datoCrudo = parseInt(
-//     prompt("No ingresaste un número válido. Ingresar un número entre 0 y 6"),
-//   );
-// }
-
-// var noEsNumero = Number.isNaN(datoCrudo);
-// var numeroFueraDeRango = datoCrudo < 0 || datoCrudo > 6;
-
-// while (noEsNumero || numeroFueraDeRango) {
-//   datoCrudo = parseInt(
-//     prompt("No ingresaste un número válido. Ingresar un número entre 0 y 6"),
-//   );
-// }
-
-// En esta línea estamos seguros de que la variable datoCrudo ES un número entre 0 y 6. En esta línea tengo un DATO PROCESADO
+// ul.innerHTML =
+//   "<li>" +
+//   colores[0] +
+//   "</li>" +
+//   "<li>" +
+//   colores[1] +
+//   "</li>" +
+//   "<li>" +
+//   colores[2] +
+//   "</li>";
 
 /*
-    key -> DATO PROCESADO
-    value -> valor esperado
-    break -> Forzar la finalización del switch
-    default -> Equivalente al else del condicional if/else. Puede no estar
-
-    switch (key) {
-        case value:
-            // Código que se ejecuta cuando se cumple la condición
-            break;
-
-        default:
-            break;
+    for (inicializador; condición; modificador) {    
+        // Bloque de código
     }
 */
 
-// switch (datoCrudo) {
-//   case 0:
-//     console.log("Es Domingo");
-//     break;
-
-//   case 1:
-//     console.log("Es Lunes");
-//     break;
-
-//   case 2:
-//     console.log("Es Martes");
-//     break;
-
-//   case 3:
-//     console.log("Es Miércoles");
-//     break;
-
-//   case 4:
-//     console.log("Es Jueves");
-//     break;
-
-//   case 5:
-//     console.log("Es Viernes");
-//     break;
-
-//   case 6:
-//     console.log("Es Sábado");
-//     break;
-
-//   default:
-//     console.error("El programa falló");
-//     break;
-// }
-
-// switch (datoCrudo) {
-//   case 6:
-//   case 0:
-//     console.log("Es Fin de Semana");
-//     break;
-
-//   case 1:
-//   case 2:
-//   case 3:
-//   case 4:
-//   case 5:
-//     console.log("Es día de Semana");
-//     break;
-// }
-
-// if (datoCrudo == 0 || datoCrudo == 6) {
-//   console.log("Es Fin de Semana");
-// } else {
-//   console.log("Es día de Semana");
-// }
-
-// document.querySelector - Crear un Objeto HTML que almacenamos en la variable para utilizar todo lo que guarda
-var elementoHTML = document.querySelector("main");
-
-// new Date() - Crea un Objeto Date que almacenamos en la variable para utilizar todo lo que guarda
-var date = new Date();
-console.log(date);
-console.log("Fecha", date.toLocaleDateString());
-console.log("Fecha en Español", new Intl.DateTimeFormat("es").format(date));
-console.log("Número del día en el mes", date.getDate());
-console.log("Número del día en la semana", date.getDay()); //0 (Domingo) - 6 (Sábado)
-
-var fechaEspecificaIngles = new Date("03/25/2026");
-var fechaEspecificaEsp = new Intl.DateTimeFormat("es").format(
-  fechaEspecificaIngles,
-);
-console.log("Fecha creada con el dato en ingles: ", fechaEspecificaIngles);
-console.log("Fecha creada convertida al español: ", fechaEspecificaEsp);
-
-var dia = date.getDay();
-var p = document.getElementById("dia-semana");
-console.dir(p);
-// p.innerHTML = "<p>Hoy es:</p>";
-
-p.className = "cartel";
-
-switch (dia) {
-  case 0:
-    p.textContent = "Es Domingo";
-    break;
-
-  case 1:
-    p.textContent = "Es Lunes";
-    break;
-
-  case 2:
-    p.textContent = "Es Martes";
-    break;
-
-  case 3:
-    // p.innerHTML += "<p>Miércoles</p>";
-    p.textContent = "Es Miércoles";
-    break;
-
-  case 4:
-    p.textContent = "Es Jueves";
-    break;
-
-  case 5:
-    p.textContent = "Es Viernes";
-    break;
-
-  case 6:
-    p.textContent = "Es Sábado";
-    break;
-
-  default:
-    console.error("El programa falló");
-    break;
+var longitud = colores.length;
+var elementosLi = "";
+// inicializador; condición; modificador
+for (var i = 0; i < longitud; i++) {
+  // Bloque de código
+  elementosLi += "<li>" + colores[i] + "</li>";
 }
 
-/*
-    EJEMPLO DE PROGRAMA DE VALIDACIÓN USANDO IF Y ESCALONANDO CORRECTAMENTE LAS CONDICIONES
+ul.innerHTML = elementosLi;
 
-    Programa - Mostrar por en el HTML utilizando el Objeto HTML si la edad corresponde a un niño, un adolescente o un adulto. Si hay un error, crear un vista para el error
-        -> niño - menor de 13 años
-            -> edad < 13
-        -> adolescente - tiene entre 13 y 17 años
-            -> ¿Es edad >= 13? ¿Es edad <= 17?
-                -> edad >= 13 && edad <= 17
-        -> adulto - mayor de 18 años
+// for (var i = 0; i < colores.length; i++) {
+//   // Bloque de código
+//   ul.innerHTML += "<li>" + colores[i] + "</li>";
+// }
+
+console.log(" ");
+console.log("Bucle do-while");
+
+while (false) {
+  console.log("Esto nunca se ejecuta");
+}
+
+do {
+  console.log("Esto se ejecuta una vez");
+} while (false);
+
+/*
+    Programa - Permitir el "almacenaje" de usuarios y mostrar en pantalla la lista de todos los usuarios ingresados. No debe haber 2 usuarios con el mismo nombre. Ningún usuario puede tener la contraseña vacía. Se debe ingresar, al menos 1 usuario completo. No hay límite a la cantidad de usuarios a ingresar.
 */
 
-var edad = parseInt(prompt("Ingrese su edad"));
+var listaUsuarios = [];
 
-// false || false ||  true - true | Validación de dato
-var esDatoIncorrecto = edad < 0 || edad > 120 || Number.isNaN(edad);
-var esNinio = edad < 13;
-var esAdolescente = edad >= 13 && edad <= 17;
+do {
+  var usuario = {
+    nombre: "",
+    pass: "",
+  };
 
-var section = document.querySelector("#ejercicio-edad");
-section.className = "cartel";
+  var esRepetido = true; // Bandera para identificar si tengo que continuar con el do-while
+  do {
+    esRepetido = false; // Empiezo asumiendo que NO es repetido
+    usuario.nombre = prompt("Ingrese el nombre de usuario");
 
-if (esDatoIncorrecto) {
-  section.className += " error";
-  section.innerHTML = "<h2>Ejercicio edad</h2><p>No es una edad válida</p>";
-} else if (esNinio) {
-  section.innerHTML = "<h2>Ejercicio edad</h2><p>Niño</p>";
-} else if (esAdolescente) {
-  section.innerHTML = "<h2>Ejercicio edad</h2><p>Adolescente</p>";
-} else {
-  section.innerHTML = "<h2>Ejercicio edad</h2><p>Adulto</p>";
+    // Recorro la lista COMPLETA para ver si el nombre ya existe
+    for (var i = 0; i < listaUsuarios.length; i++) {
+      var usuarioEnLista = listaUsuarios[i];
+
+      if (usuarioEnLista.nombre === usuario.nombre) {
+        esRepetido = true;
+        break; // Dejo de recorrer: ya encontré un nombre repetido
+      }
+    }
+
+    // Si encuentro un nombre repetido, vuelvo a lanzar el do-while
+  } while (esRepetido);
+
+  usuario.pass = prompt("Ingrese la contraseña de usuario");
+  while (!usuario.pass) {
+    usuario.pass = prompt(
+      "La contraseña de usuario de usuario no puede estar vacía",
+    );
+  }
+
+  listaUsuarios.push(usuario);
+
+  var continuar = confirm("¿Ingresar otro usuario?"); // Permite que el usuario introduzca un boolean
+} while (continuar);
+
+var tbody = document.querySelector("#usuarios");
+
+for (var i = 0; i < listaUsuarios.length; i++) {
+  var usuario = listaUsuarios[i];
+  tbody.innerHTML +=
+    "<tr>" +
+    "<td>" +
+    usuario.nombre +
+    "</td>" +
+    "<td>" +
+    usuario.pass +
+    "</td>" +
+    "</tr>";
 }
