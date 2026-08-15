@@ -190,10 +190,13 @@ do {
     pass: "",
   };
 
-  var esRepetido = true; // Bandera para identificar si tengo que continuar con el do-while
+  var esRepetido = false; // Bandera para identificar si tengo que continuar con el do-while. Empiezo asumiendo que NO es repetido
   do {
-    esRepetido = false; // Empiezo asumiendo que NO es repetido
-    usuario.nombre = prompt("Ingrese el nombre de usuario");
+    var msg = esRepetido
+      ? "Nombre ya existe. Ingrese uno nuevo"
+      : "Ingrese el nombre de usuario";
+    usuario.nombre = prompt(msg);
+    esRepetido = false; // Reseteamos a valor inicial para siguiente iteración.
 
     // Recorro la lista COMPLETA para ver si el nombre ya existe
     for (var i = 0; i < listaUsuarios.length; i++) {
