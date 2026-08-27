@@ -1,19 +1,9 @@
-.cartel {
+.certificate {
     width: 250px;
-    height: 150px;
-    background-color: cadetblue;
-    color: whitesmoke;
-    font-size: 1.5rem;
-    font-weight: 700;
+    border-radius: 8px;
     text-align: center;
-    /* line-height: 150px; */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.error {
-    background-color: red;
+    padding: 8px;
+    margin-bottom: 4px;
+    background-color: antiquewhite;
+    color: #666;
 }

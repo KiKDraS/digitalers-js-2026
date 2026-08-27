@@ -14,32 +14,43 @@
 
     <link rel="stylesheet" href="css/index.css">
     <title>Digitalers</title>
+
+    <!-- Módulos - Archivos JS que permiten controlar cuándo se ejecuta un código. Permiten manejar código más limpio y fácil de leer -->
+    <script async src="js/modules/purify.min.js"></script>
+    <script defer src="js/modules/eventoInput.js"></script>
+    <script defer src="js/modules/objetoArray.js"></script>
+    <script defer src="js/modules/replicarObjetoArray.js"></script>
+
+    <!-- Entry Point -->
+    <script defer src="js/index.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Clase 23</h1>
+        <h1>Clase 24</h1>
+        <!-- Manipulación del DOM - https://github.com/KiKDraS/manipulacion-dom -->
     </header>
     <main>
         <section>
-            <h2>Eventos</h2>
-            <button class="btn">Mostrar lista de colores</button>
-            <ul class="colores"></ul>
+            <h2>Eventos del DOM</h2>
+            <section>
+                <h3>Evento Input</h3>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Esto ayuda con la escritura">
+                <p id="nombre-ingresado"></p>
+                <!-- <button id="btn">Mi Botón</button> -->
+            </section>
+            <section id="js-loading">
+                <h3>Formas de Cargar Archivos JS</h3>
+            </section>
+        </section>
+        <section id="map">
+            <h2>Ejemplo .map</h2>
         </section>
     </main>
     <footer>
         <p>&copy; Copyright - Digitalers 2026</p>
     </footer>
-
-    <!-- 
-        Scope (Ámbito) - Indica dónde puedo usar los elementos
-    -->
-
-    <!-- Módulo - Archivos JS que contienen funciones -->
-    <script src="js/otro.js"></script>
-
-    <!-- Punto de Entrada - Archivo que ejecuta las funciones de los otros archivos JS declaran -->
-    <script src="js/index.js"></script>
 </body>
 
 </html>
