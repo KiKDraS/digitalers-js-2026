@@ -1,12 +1,26 @@
 function eventoInput() {
   /*
       Evento
-        -> Mensaje que el navegador entrega cuando el usuario realiza una acción determinada
+        => Mensaje que el navegador entrega cuando el usuario realiza una acción determinada
           -> Un Evento "se dispara" cuando el usuario realiza esa acción
-        -> Para responder al mensaje necesitamos declarar una acción (una función)
+        => Para responder al mensaje necesitamos declarar una acción (una función)
           -> Función Callback - Se pasa como Argumento de otra para que esta la ejecute
             -> Está limitada por la función que la ejecuta 
-        -> La Callback de un Evento solo puede recibir un Parámetro para almacenar el Objeto Evento
+          -> La Callback de un Evento solo puede recibir un Parámetro para almacenar el Objeto Evento
+        => Para trabajar con Eventos
+          -> 1.- Identificar qué tipo de evento es
+              -> Evento del navegador - Necesito el Objeto window
+                -> resize (cambia el tamaño de la ventana del navegador)
+                -> navegación (cambio de la url)
+              -> Evento del documento HTML
+                -> DOMContentLoad (HTML cargado)
+              -> Eventos del Objeto HTML  
+                -> click
+                -> input (evento de formulario)
+                -> submit (evento de formulario)
+                -> change (evento de formulario)
+          -> 2.- Agregar la acción que se va a realizar cuando se dispare el evento (declarar la función callback)
+          -> 3.- Pasar la función callback al addEventListener    
     
       Funciones
         => Parámetro - "variable" que se agrega cuando declaramos la función
