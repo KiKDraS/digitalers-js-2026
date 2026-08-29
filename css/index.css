@@ -1,9 +1,115 @@
-.certificate {
-    width: 250px;
-    border-radius: 8px;
-    text-align: center;
-    padding: 8px;
-    margin-bottom: 4px;
-    background-color: antiquewhite;
-    color: #666;
+/* ==========================================
+   Reset básico
+   => box-sizing: border-box evita que el padding y el borde
+      sumen ancho extra a los contenedores
+========================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   Variables (Custom Properties)
+========================================== */
+:root {
+    --radio: 20px;
+    --padding: 16px;
+    --gap: 16px;
+    --borde: 1px solid black;
+
+    --color-1: burlywood;
+    --color-2: lightskyblue;
+    --color-3: bisque;
+}
+
+/* ==========================================
+   Estilos compartidos por todos los contenedores
+========================================== */
+div,
+.delegacion {
+    border: var(--borde);
+    border-radius: var(--radio);
+    padding: var(--padding);
+}
+
+.delegacion {
+    margin-top: var(--gap);
+
+    button {
+        margin: 16px 0;
+        color: whitesmoke;
+        background-color: darkblue;
+        border: 1px solid darkblue;
+        border-radius: 16px;
+        padding: 8px;
+    }
+}
+
+/*
+  Contenedores anidados
+    => Responsivo:
+        -> width con min()        -> nunca más ancha que la pantalla
+        -> min-height con clamp() -> la altura se adapta al viewport, no es fija
+        -> Sin min-width          -> las cajas interiores se achican junto a la pantalla
+*/
+.div-1,
+.div1 {
+    width: min(90vw, 700px);
+    min-height: clamp(280px, 45vh, 400px);
+    background-color: var(--color-1);
+
+    .div-2,
+    .div2 {
+        width: 75%;
+        min-height: clamp(180px, 35vh, 300px);
+        background-color: var(--color-2);
+
+        .div-3,
+        .div3 {
+            width: 75%;
+            min-height: clamp(120px, 25vh, 200px);
+            background-color: var(--color-3);
+        }
+    }
+
+    /* En pantallas chicas las cajas interiores ocupan más espacio útil */
+    @media (max-width: 600px) {
+
+        width: 85vw;
+        padding: 12px;
+
+        .div-2,
+        .div2 {
+            width: 85%;
+
+            .div-3,
+            .div3 {
+                width: 90%;
+            }
+        }
+    }
+}
+
+
+/* ==========================================
+   Formulario
+   => Nesting: los estilos de los inputs se anidan dentro de #miForm
+========================================== */
+#miForm {
+    margin-bottom: 500px;
+
+    input {
+        &:focus {
+            outline: none;
+        }
+
+        &.ok {
+            border: 1px solid green;
+        }
+
+        &.error {
+            border: 1px solid red;
+        }
+    }
 }
