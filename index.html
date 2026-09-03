@@ -15,93 +15,32 @@
     <link rel="stylesheet" href="css/index.css">
     <title>Digitalers</title>
 
-    <!-- Módulos - Archivos JS que permiten controlar cuándo se ejecuta un código. Permiten manejar código más limpio y fácil de leer -->
-    <script defer src="js/modules/executionContext.js"></script>
-    <script defer src="js/modules/eventos.js"></script>
-    <script defer src="js/modules/formularios.js"></script>
-    <script defer src="js/modules/regExp.js"></script>
-
-    <!-- Entry Point -->
-    <script defer src="js/index.js"></script>
+    <!-- Entry Point - Módulo de ECMAScript 2015 -->
+    <script type="module" src="js/index.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Clase 25</h1>
+        <h1>Clase 26</h1>
     </header>
     <main>
-        <section class="evento">
-            <h2>Eventos</h2>
-            <!-- 
-                Nodo del DOM
-                dataset: {}
-            -->
-            <h3>Comportamiento de los Eventos</h3>
-            <!-- 
-                data-* -> Atributo de HTML que permite identificar un elemento
-                sin otorgar valor extra
-
-                Nodo del DOM
-                dataset: {
-                    id: "div-1",
-                    pepe: "pepe",
-                    miId: "un-id"
-                }
-            -->
-            <div class="div-1" data-id="div-1" data-pepe="pepe" data-mi-id="un-id">
-                div-1
-                <!-- 
-                    Nodo del DOM
-                    dataset: {
-                        id: "div-2"
-                    }
-                -->
-                <div class="div-2" data-id="div-2">
-                    div-2
-                    <!-- 
-                        Nodo del DOM
-                        dataset: {
-                            id: "div-3"
-                        }
-                    -->
-                    <div class="div-3" data-id="div-3">
-                        div-3
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="delegacion">
-            <h3>Delegación de Eventos</h3>
-            <div class="div1" data-id="1">
-                div1
-                <div class="div2" data-id="2">
-                    div2
-                    <div class="div3" data-id="3">
-                        div3
-                    </div>
-                </div>
-            </div>
-
-            <!-- https://tabler.io/icons -->
-            <button data-id="btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-heart-plus">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 20l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.96 6.053" />
-                    <path d="M16 19h6" />
-                    <path d="M19 16v6" />
-                </svg>
-            </button>
-        </section>
         <section>
-            <h2>Eventos de Formulario</h2>
-            <!-- Repositorio GitHub (RegExp) - https://github.com/KiKDraS/regular-expresions -->
-            <form id="miForm">
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre">
-                <input type="email" name="email" id="email" placeholder="Email">
-                <button type="submit">Enviar</button>
-            </form>
+            <h2>Peticiones AJAX</h2>
+            <div class="loader lds-default">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <section id="response"></section>
         </section>
     </main>
     <footer>
