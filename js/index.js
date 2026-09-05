@@ -1,8 +1,21 @@
-import { peticionesAJAX } from "./modules/peticionesAJAX.js";
-// import pepe, { sumar, restar } from "./modules/modulos-es6.js";
+import { obtenerPostsUsuarioFetch } from "./modules/apiWebFetch.js";
+import { obtenerPostsUsuarioAsyncAwait } from "./modules/async-await.js";
 
-// console.log(sumar(2, 2));
-// console.log(restar(5, 2));
-// pepe();
+const AntiguoModulo = (function () {
+  const nombre = "Pepe";
 
-peticionesAJAX();
+  return {
+    saludar: () => console.log(`Hola ${nombre}`),
+  };
+
+  // Closure - ocurre cuando una función "recuerda" y mantiene acceso a las variables del lugar donde fue creada, incluso después de que la función que la contenía ya terminó de ejecutarse.
+
+  // saludar sigue recordando y accediendo a nombre aunque la función padre ya haya finalizado
+})();
+
+// console.log(AntiguoModulo);
+// AntiguoModulo.saludar();
+
+obtenerPostsUsuarioFetch();
+
+obtenerPostsUsuarioAsyncAwait();
